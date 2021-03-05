@@ -38,9 +38,13 @@ def alta_cultivo(dCultivos):
             break #si los datos introducidos son numeros enteros se sale del bucle infinito
         except ValueError: #si se produce un ValueError
             print('\nEl número que ha introducido no es entero. Vuelva a intentarlo.') #mensaje de error y se continua en el bucle infinito
+    estacion = input("Estación en la que se puede cultivar \nP = primavera\nV = verano\nO = otoño\nI = invierno\nT = todas\nEstacion(P,V,O,I o T): ")
+    while estacion != 'P' and estacion != 'V' and estacion != 'O' and estacion != 'I' and estacion != 'T':
+        print("\nError. El caracter introdcido no se corresponde con ninguna estacion. Vuelva a intentarlo:")
+        estacion = input("Estación en la que se puede cultivar \nP = primavera\nV = verano\nO = otoño\nI = invierno\nT = todas\nEstacion(P,V,O,I o T): ")
     dCultivos.update({idC : [tipoC, tipoCactual, transfsuelo, tamañomin, tiempoC]}) #dCultivos = diccionario en el que se almacenan los datos de los cultivos
     print('\nCOMPLETADA LA CREACIÓN DEL CULTIVO')#mensaje de creación completada
-    print('\nID Cultivo: ', idC,' \nSuelo: ', tipoC,'\nNuevo suelo ', tipoCactual, '\nTamaño mínimo: ', tamañomin, 'hectáreas\nTiempo: ', tiempoC, ' días.')
+    print('\nID Cultivo: ', idC,' \nSuelo: ', tipoC,'\nNuevo suelo ', tipoCactual, '\nTamaño mínimo: ', tamañomin, 'hectáreas\nTiempo: ', tiempoC, ' días.\nEstación: ', estacion)
     Cultivos_sorted = sorted(dCultivos.items()) #ordeno los elementos del dic dCultivos en la lista Cultivos_sorted
     dCultivos.clear() #elimino los elementos del dic dCultivos para reordenar sus elementos
     for cultivos in range(len(Cultivos_sorted)): #convierto en dic la lista Cultivos_sorted
